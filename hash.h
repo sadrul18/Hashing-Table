@@ -49,7 +49,7 @@ protected:
         string key;
         long long value;
         Node *right;
-        Node(string k = "", long long val = 0, Node *r = nullptr)
+        Node(string k = "", long long val = -1, Node *r = nullptr)
         {
             key = k;
             value = val;
