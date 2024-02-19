@@ -1,7 +1,7 @@
 #ifndef DOUBLE_CUSTOM_H
 #define DOUBLE_CUSTOM_H
 
-#include<iostream>
+#include <iostream>
 #include "hash.h"
 using namespace std;
 class closedHash : public Hash
@@ -59,11 +59,12 @@ public:
 
     void insert(string key, long long value)
     {
-        if ((size / N > 0.2) || (size > 100 && probes / (0.1 * N) > 2))
+        if ((size / N > 0.5) || (probes / (0.1 * N) > 2))
         {
             reHash(1);
         }
         long long index, prev = 0;
+        bool flag = true;
         for (long long i = 0; i < N; i++)
         {
             prev = index;
@@ -89,11 +90,20 @@ public:
                 break;
             }
 
-            else if (hashTable[index].key != "")
+            // else if (hashTable[index].key != "")
+            // {
+            //     if (flag)
+            //     {
+            //         collisions++;
+            //         flag =false;
+            //     }
+            // }
+
+            else if(hashTable[index].key != "")
             {
                 collisions++;
             }
-        } 
+        }
     }
 
     bool remove(string key)

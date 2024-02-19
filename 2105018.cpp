@@ -91,7 +91,7 @@ int main()
     {
         for (long long i = 1; i <= 2; i++)
         {
-            chaining *chain = new chaining(size[s], i, 100);
+            chaining *chain = new chaining(size[s], i, 5);
 
             for (long long m = 0; m < N; m++)
             {
@@ -107,8 +107,6 @@ int main()
             {
                 chain->find(uniqueWords[m]);
             }
-            // chain->showHashTable();
-            // cout << chain->getCollisions() << " " << (double)chain->getProbes() / T << endl;
             report[n][0][i - 1][0] = chain->getCollisions();    
             report[n][0][i - 1][1] = (double) chain->getProbes() / T;
             delete chain;
@@ -134,14 +132,13 @@ int main()
                 c->resetProbes();
                 for (long long k = 0; k < T; k++)
                 {
-                    c->find(words[k]);
+                    c->find(uniqueWords[k]);
                 }
 
 
                 report[n][j][i - 1][0] = c->getCollisions();    
                 report[n][j][i - 1][1] = (double) c->getProbes() / T;
 
-                // cout << c->getCollisions() << " " << (double)c->getProbes() / T << endl;
                 delete c;
             }
         }

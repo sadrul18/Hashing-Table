@@ -70,6 +70,9 @@ public:
 
     void reHash(char ch)
     {
+        cout<<"Load-factor: "<<(double)size/N<<endl;
+        cout<<"Average probe count: "<<(double)probes/size<<endl;
+        cout<<"Max chain length before rehashing: "<<maxChainLen()<<endl;
         long long oldN = N;
         if (ch == 'D') // D for doubling the size
         {
@@ -109,6 +112,8 @@ public:
             }
         }
         delete[] tempHashTable;
+        cout<<"Max chain length after rehashing: "<<maxChainLen()<<endl<<endl;
+
     }
 
     void insert(string key, long long value)
